@@ -1,3 +1,4 @@
 # Miuul---The-Outliers-Project-
 Data analysis project for ...
-Deneme
+
+Deneme----ozn
