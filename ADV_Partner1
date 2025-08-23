@@ -1,0 +1,9 @@
+CREATE VIEW ADV_Partner1 AS
+SELECT ap.*, 
+CASE
+WHEN r.Business_Type is NULL THEN 'Internet'
+else r.Business_Type end as Business_Type,
+pc.Channel
+FROM ADV_Partner ap 
+LEFT JOIN adventureworksdb.dbo.Resellers r on ap.PartnerKey=r.ResellerKey
+LEFT JOIN A_partnerchannel pc on ap.PartnerKey=pc.PartnerKey
