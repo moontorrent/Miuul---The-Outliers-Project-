@@ -1,0 +1,6 @@
+CREATE VIEW ADV_Partner AS 
+SELECT C.CustomerKey AS PartnerKey,c.Customer_ID as PartnerID,c.Customer as Partner ,c.City,c.State_Province,c.Country_Region,c.Postal_Code  
+FROM adventureworksdb.dbo.customers c where CustomerKey <> -1 
+UNION ALL 
+SELECT r.ResellerKey as PartnerKey,r.Reseller_ID as PartnerID,r.Reseller as Partner,r.City,r.State_Province,r.Country_Region,r.Postal_Code  
+FROM adventureworksdb.dbo.Resellers r where ResellerKey <> -1
