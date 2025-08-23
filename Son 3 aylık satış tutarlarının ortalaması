@@ -1,0 +1,8 @@
+Son 3 aylık satış tutarlarının ortalaması
+
+SELECT round(AVG(AVG_SalesAmount),1) as AVG_SalesAmount FROM
+(select TOP 3 * FROM
+(SELECT YEAR(orderdate) Year,MONTH(orderdate) Month,round(AVG(Sales_amount),1) AVG_SalesAmount fROM adv_sales1
+GROUP BY YEAR(orderdate),MONTH(orderdate)) T
+where t.YEAR = 2020
+ORDER BY 2 DESC) x
