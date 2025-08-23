@@ -1,0 +1,23 @@
+CREATE VIEW ADV_Season AS
+SELECT DISTINCT 
+Country_Region,  MONTH(a.OrderDate) as Month_,
+    CASE 
+        -- Kuzey yarımküre ülkeleri
+        WHEN Country_Region IN ('United States','Canada','Germany','United Kingdom','France') THEN
+            CASE 
+                WHEN MONTH(a.OrderDate) IN (12,1,2) THEN 'Winter'
+                WHEN MONTH(a.OrderDate) IN (3,4,5) THEN 'Spring'
+                WHEN MONTH(a.OrderDate) IN (6,7,8) THEN 'Summer'
+                WHEN MONTH(a.OrderDate) IN (9,10,11) THEN 'Autumn'
+            END
+        
+        -- Güney yarımküre ülkeleri
+        WHEN Country_Region IN ('Australia') THEN
+            CASE 
+                WHEN MONTH(a.OrderDate) IN (12,1,2) THEN 'Summer'
+                WHEN MONTH(a.OrderDate) IN (3,4,5) THEN 'Autumn'
+                WHEN MONTH(a.OrderDate) IN (6,7,8) THEN 'Winter'
+                WHEN MONTH(a.OrderDate) IN (9,10,11) THEN 'Spring'
+            END
+    END AS Season
+    FROM adv_Sales1 a
