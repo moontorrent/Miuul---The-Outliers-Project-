@@ -1,0 +1,16 @@
+GEÇEN YIL AYNI AYDA SATIŞ ADEDİ
+
+SELECT 
+    OrderYear,
+    OrderMonth,
+    Total_Quantity,
+    LAG(Total_Quantity) OVER (ORDER BY OrderYear,OrderMonth) AS PreviousMonth_Quantity 
+FROM 
+    (SELECT 
+        YEAR(orderdate) as OrderYear,
+        MONTH(OrderDate) AS OrderMonth,        
+        SUM(Order_Quantity) AS Total_Quantity
+    FROM ADV_Sales1
+    GROUP BY YEAR(orderdate), MONTH(OrderDate)
+    ) AS T
+ORDER BY OrderYear,OrderMonth
