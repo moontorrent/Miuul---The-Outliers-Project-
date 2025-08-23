@@ -1,0 +1,7 @@
+CREATE VIEW A_PartnerChannel AS 
+select distinct CASE 
+WHEN s.ResellerKey=-1 THEN s.CustomerKey 
+else s.ResellerKey 
+END  
+AS PartnerKey, so.Channel from adventureworksdb.dbo.Sales s  
+LEFT JOIN adventureworksdb.dbo.SalesOrder so on s.SalesOrderLineKey=so.SalesOrderLineKey
