@@ -1,0 +1,22 @@
+CREATE VIEW ADV_Sales1 AS 
+Select  
+p.Partner, 
+p.PartnerKey, 
+p.Business_Type, 
+p.Country_Region, 
+p.City, 
+s.Category, 
+s.Subcategory, 
+s.Product, 
+s.OrderDate, 
+s.OrderDateKey, 
+s.DueDateKey, 
+s.ShipDateKey, 
+s.Order_Quantity, 
+s.Unit_Price, 
+s.Extended_Amount, 
+s.Product_Standard_Cost, 
+s.Total_Product_Cost, 
+s.Sales_Amount 
+ from ADV_Sales s  
+LEFT JOIN ADv_Partner1 p on s.PartnerKey=p.PartnerKey
