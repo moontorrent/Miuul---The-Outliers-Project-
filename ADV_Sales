@@ -1,0 +1,19 @@
+CREATE VIEW ADv_Sales AS  
+SELECT CASE  
+WHEN s.ResellerKey=-1 THEN s.CustomerKey  
+else s.resellerkey  
+END   
+AS PartnerKey, S.*, p.Category, p.Subcategory, p.Product, d.[Date] as OrderDate 
+FROM adventureworksdb.DBO.Sales S  
+LEFT JOIN adventureworksdb.DBO.SalesOrder so on s.SalesOrderLineKey=so.SalesOrderLineKey 
+LEFT JOIN adventureworksdb.DBO.Products p on s.ProductKey=p.ProductKey 
+LEFT JOIN adventureworksdb.DBO.Dates d on s.OrderDateKey=d.DateKey
+SELECT CASE  
+WHEN s.ResellerKey=-1 THEN s.CustomerKey  
+else s.resellerkey  
+END   
+AS PartnerKey, S.*, p.Category, p.Subcategory, p.Product, d.[Date] as OrderDate 
+FROM adventureworksdb.DBO.Sales S  
+LEFT JOIN adventureworksdb.DBO.SalesOrder so on s.SalesOrderLineKey=so.SalesOrderLineKey 
+LEFT JOIN adventureworksdb.DBO.Products p on s.ProductKey=p.ProductKey 
+LEFT JOIN adventureworksdb.DBO.Dates d on s.OrderDateKey=d.DateKey
